@@ -5,13 +5,13 @@ public class Detalle extends Encabezado{
     private Integer fkEncabezado; 
     private String detFecha;
     private String detHoras;
-    private String detValor;
+    private Double detValor;
     private String detTipo;
 
     public Detalle() {
     }
 
-    public Detalle(Integer idDetalle, Integer fkEncabezado, String detFecha, String detHoras, String detValor, String detTipo) {
+    public Detalle(Integer idDetalle, Integer fkEncabezado, String detFecha, String detHoras, Double detValor, String detTipo) {
         this.idDetalle = idDetalle;
         this.fkEncabezado = fkEncabezado;
         this.detFecha = detFecha;
@@ -20,7 +20,7 @@ public class Detalle extends Encabezado{
         this.detTipo = detTipo;
     }
 
-    public Detalle(Integer fkEncabezado, String detFecha, String detHoras, String detValor, String detTipo) {
+    public Detalle(Integer fkEncabezado, String detFecha, String detHoras, Double detValor, String detTipo) {
         this.fkEncabezado = fkEncabezado;
         this.detFecha = detFecha;
         this.detHoras = detHoras;
@@ -60,11 +60,11 @@ public class Detalle extends Encabezado{
         this.detHoras = detHoras;
     }
 
-    public String getDetValor() {
+    public Double getDetValor() {
         return detValor;
     }
 
-    public void setDetValor(String detValor) {
+    public void setDetValor(Double detValor) {
         this.detValor = detValor;
     }
 
@@ -75,7 +75,8 @@ public class Detalle extends Encabezado{
     public void setDetTipo(String detTipo) {
         this.detTipo = detTipo;
     }
-    
+
+   
     
     
 }

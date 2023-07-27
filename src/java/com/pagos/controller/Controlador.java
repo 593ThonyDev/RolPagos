@@ -5,6 +5,7 @@ import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
 import java.io.IOException;
+import java.util.Date;
 
 public class Controlador extends HttpServlet {
 
@@ -28,6 +29,10 @@ public class Controlador extends HttpServlet {
                     acceso = USUARIOS;
                     break;
                 case "rol":
+                    Date fechaActual = new Date();
+
+                    // Mostrar la fecha actual
+                    System.out.println("Fecha actual: " + fechaActual);
                     acceso = ROLES;
                     break;
                 default:

@@ -87,75 +87,76 @@
                     <div class="card-header">
                         <h4>NUEVO ROL DE PAGO</h4>
                     </div>
-                    <div class="card-body p-4">
-                        <div class="row">
-                            <div class="col-xl-6">
-                                <p class="mb-1 text-primary">Empleado:</p>
-                                <div class="input-group mb-3">
-                                    <input type="text" name="nombres" id="nombres" class="form-control" id="lblNombreProd">
-                                    <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#modalUsuarios">Buscar</button>
+                    <form action="RolPago" method="post">
+                        <div class="card-body p-4">
+                            <div class="row">
+                                <div class="col-xl-6">
+                                    <p class="mb-1 text-primary">Empleado:</p>
+                                    <div class="input-group mb-3">
+                                        <input type="text" name="nombres" id="nombres" class="form-control" id="lblNombreProd">
+                                        <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#modalUsuarios">Buscar</button>
+                                    </div>
+                                    <input class="form-control" type="hidden" required="true" name="idUsuario" value="${idUsuario}">
+                                    <input class="form-control" type="hidden" required="true" name="fkUsuario" id="fkUsuario">
                                 </div>
-                                <input class="form-control" type="hidden" required="true" name="idUsuario" value="${idUsuario}">
-                                <input class="form-control" type="hidden" required="true" name="fkUsuario">
+                                <div class="col-xl-6 mb-3">
+                                    <div class="example">
+                                        <p class="mb-1 text-primary">Fecha emision</p>
+                                        <input type="date" class="form-control" required="true" name="encEmision" id="encEmision">
+                                    </div>
+                                </div>            
+                                <div class="col-xl-6 mb-3">
+                                    <div class="example">
+                                        <p class="mb-1 text-primary">Fecha inicio:</p>
+                                        <input type="date" class="form-control" required="true" name="detInicio" id="detInicio">
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 mb-3">
+                                    <div class="example">
+                                        <p class="mb-1 text-primary">Fecha fin</p>
+                                        <input type="date" class="form-control" required="true" name="detFin" id="detFin">
+                                    </div>
+                                </div>               
+                                <div class="col-xl-6 mb-3">
+                                    <div class="example">
+                                        <p class="mb-1 text-primary">Horas trabajadas:</p>
+                                        <input type="number" class="form-control" required="true" name="detHoras" id="detHoras">
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 mb-3">
+                                    <div class="example">
+                                        <p class="mb-1 text-primary">Valor por hora</p>
+                                        <input type="number" class="form-control" required="true" name="detHoraValor" id="detHoraValor">
+                                    </div>
+                                </div>     
+                            </div>   
+                            <button type="button" class="btn btn-primary mb-3" onclick="calcularRolDePagos()">Calcular</button>
+                            <div class="table-responsive">
+                                <table class="table text-center h-100 py-5" id="detalle-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Fecha inicio</th>
+                                            <th>Fecha fin</th>
+                                            <th>Horas trabajadas</th>
+                                            <th>Valor por hora</th>
+                                            <th>Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="detalle-table-body">
+                                        <!-- Existing table rows will be appended here -->
+                                    </tbody>
+                                </table>
                             </div>
-                            <div class="col-xl-6 mb-3">
-                                <div class="example">
-                                    <p class="mb-1 text-primary">Fecha emision</p>
-                                    <input type="date" class="form-control" required="true" name="encEmision" id="encEmision">
-                                </div>
-                            </div>            
-                            <div class="col-xl-6 mb-3">
-                                <div class="example">
-                                    <p class="mb-1 text-primary">Fecha inicio:</p>
-                                    <input type="date" class="form-control" required="true" name="detInicio" id="detInicio">
-                                </div>
-                            </div>
-                            <div class="col-xl-6 mb-3">
-                                <div class="example">
-                                    <p class="mb-1 text-primary">Fecha fin</p>
-                                    <input type="date" class="form-control" required="true" name="detFin" id="detFin">
-                                </div>
-                            </div>               
-                            <div class="col-xl-6 mb-3">
-                                <div class="example">
-                                    <p class="mb-1 text-primary">Horas trabajadas:</p>
-                                    <input type="number" class="form-control" required="true" name="detHoras" id="detHoras">
-                                </div>
-                            </div>
-                            <div class="col-xl-6 mb-3">
-                                <div class="example">
-                                    <p class="mb-1 text-primary">Valor por hora</p>
-                                    <input type="number" class="form-control" required="true" name="detHoraValor" id="detHoraValor">
-                                </div>
-                            </div>     
-                        </div>   
-                        <button type="button" class="btn btn-primary mb-3" onclick="calcularRolDePagos()">Calcular</button>
-                        <div class="table-responsive">
-                            <table class="table text-center h-100 py-5" id="detalle-table">
-                                <thead>
-                                    <tr>
-                                        <th>Fecha inicio</th>
-                                        <th>Fecha fin</th>
-                                        <th>Horas trabajadas</th>
-                                        <th>Valor por hora</th>
-                                        <th>Total</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="detalle-table-body">
-                                    <!-- Existing table rows will be appended here -->
-                                </tbody>
-                            </table>
                         </div>
-                    </div>
-                    <div class=" card-footer">
-                        <div class="d-flex">
-                            <div class="mr-2 bold">TOTAL A PAGAR:</div>
-                            <div class="mx-5 text-black" id="totalPagar">0.00</div>
+                        <div class=" card-footer">
+                            <div class="d-flex">
+                                <div class="mr-2 bold">TOTAL A PAGAR:</div>
+                                <div class="mx-5 text-black" id="totalPagar" name="totalPagarENC">0.00</div>
+                            </div>
+                            <br>
+                            <input class="btn btn-primary ml-2" type="submit" name="accion" value="guardar">
                         </div>
-                        <br>
-                        <button class="btn btn-primary mb-3" onclick="calcularRolDePagos()">Calcular</button>
-                    </div>
-
+                    </form>
                 </div>
             </div
         </main>

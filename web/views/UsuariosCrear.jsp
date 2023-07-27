@@ -31,7 +31,7 @@
         <header id="header" class="header fixed-top d-flex align-items-center">
             <div class="d-flex align-items-center justify-content-between">
                 <span class="logo d-flex align-items-center text-uppercase">
-                    <span class="d-none d-lg-block">Papeleria</span>
+                    <span class="d-none d-lg-block">RolPagos</span>
                 </span>
                 <i class="bi bi-list toggle-sidebar-btn"></i>
             </div>           
@@ -113,13 +113,13 @@
                             <div class="col-xl-6 mb-3">
                                 <div class="example">
                                     <p class="mb-1 text-primary">Nombres:</p>
-                                    <input class="form-control" type="text" required="true" name="usuUsuario">
+                                    <input class="form-control" type="text" required="true" name="usuNombres">
                                 </div>
                             </div>
                             <div class="col-xl-6 mb-3">
                                 <div class="example">
                                     <p class="mb-1 text-primary">Apellidos</p>
-                                    <input type="password" class="form-control" required="true" name="usuClave">
+                                    <input type="password" class="form-control" required="true" name="usuApellidos">
                                 </div>
                             </div>                                            
                         </div>                                                                                                                                                                                                                                           
@@ -127,13 +127,13 @@
                             <div class="col-xl-6 mb-3">
                                 <div class="example">
                                     <p class="mb-1 text-primary">Telefono:</p>
-                                    <input class="form-control" type="text" required="true" name="usuUsuario">
+                                    <input class="form-control" type="text" required="true" name="usuTelefono">
                                 </div>
                             </div>
                             <div class="col-xl-6 mb-3">
                                 <div class="example">
                                     <p class="mb-1 text-primary">Direccion</p>
-                                    <input type="password" class="form-control" required="true" name="usuClave">
+                                    <input type="password" class="form-control" required="true" name="usuDireccion">
                                 </div>
                             </div>                                            
                         </div>                                                                                                                                                                                                                                           

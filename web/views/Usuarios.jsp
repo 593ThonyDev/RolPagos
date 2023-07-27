@@ -40,7 +40,7 @@
         <header id="header" class="header fixed-top d-flex align-items-center">
             <div class="d-flex align-items-center justify-content-between">
                 <span class="logo d-flex align-items-center text-uppercase">
-                    <span class="d-none d-lg-block">Papeleria</span>
+                    <span class="d-none d-lg-block">ROL PAGOS</span>
                 </span>
                 <i class="bi bi-list toggle-sidebar-btn"></i>
             </div>           

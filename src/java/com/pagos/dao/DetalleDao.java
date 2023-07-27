@@ -53,7 +53,7 @@ public class DetalleDao implements crudDetalle {
                 det.setFkEncabezado(rs.getInt(2));
                 det.setDetFecha(rs.getString(3));
                 det.setDetHoras(rs.getString(4));
-                det.setDetValor(rs.getString(5));
+                det.setDetValor(rs.getDouble(5));
                 det.setDetTipo(rs.getString(6));
                 // Se agrega el objeto det a la lista de detalles
                 lista.add(det);
@@ -85,7 +85,7 @@ public class DetalleDao implements crudDetalle {
                 detalle.setFkEncabezado(rs.getInt(2));
                 detalle.setDetFecha(rs.getString(3));
                 detalle.setDetHoras(rs.getString(4));
-                detalle.setDetValor(rs.getString(5));
+                detalle.setDetValor(rs.getDouble(5));
                 detalle.setDetTipo(rs.getString(6));
             }
         } catch (SQLException ex) {
@@ -108,7 +108,7 @@ public class DetalleDao implements crudDetalle {
             cs.setInt(1, det.getFkEncabezado());
             cs.setString(2, det.getDetFecha());
             cs.setString(3, det.getDetHoras());
-            cs.setString(4, det.getDetValor());
+            cs.setDouble(4, det.getDetValor());
             cs.setString(5, det.getDetTipo());
             // Se ejecuta el procedimiento almacenado para agregar el nuevo detalle a la base de datos
             cs.execute();
@@ -134,7 +134,7 @@ public class DetalleDao implements crudDetalle {
             cs.setInt(2, det.getFkEncabezado());
             cs.setString(3, det.getDetFecha());
             cs.setString(4, det.getDetHoras());
-            cs.setString(5, det.getDetValor());
+            cs.setDouble(5, det.getDetValor());
             cs.setString(6, det.getDetTipo());
             // Se ejecuta el procedimiento almacenado para actualizar el detalle en la base de datos
             cs.execute();

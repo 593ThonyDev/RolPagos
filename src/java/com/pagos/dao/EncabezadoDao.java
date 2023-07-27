@@ -26,7 +26,7 @@ public class EncabezadoDao implements crudEncabezado {
     // Llamada al procedimiento almacenado para obtener un encabezado por su ID
     String getById = "CALL spObtenerEncabezadoPorID(?)";
     // Llamada al procedimiento almacenado para agregar un nuevo encabezado
-    String add = "CALL spCrearEncabezado(?,?,?,?,?)";
+    String add = "CALL CrearEncabezado(?,?,?,?,?)";
     // Llamada al procedimiento almacenado para actualizar un encabezado existente
     String update = "CALL spActualizarEncabezado(?,?,?,?,?,?)";
     // Llamada al procedimiento almacenado para eliminar un encabezado por su ID
@@ -94,6 +94,22 @@ public class EncabezadoDao implements crudEncabezado {
         }
         // Se devuelve el objeto encabezado que contiene los datos del encabezado recuperado de la base de datos
         return encabezado;
+    }
+    
+        public Integer getLastId() {
+        int numero = 0;
+        try {
+            con = (Connection) cn.getConexion();
+            cs = con.prepareCall("CALL obtenerUltimoIDEnc()");
+            rs = cs.executeQuery();
+            while (rs.next()) {
+                numero = rs.getInt(1);
+            }
+        } catch (SQLException ex) {
+            System.out.println("No hay id: " + ex.getMessage());
+            return 0;
+        }
+        return numero;
     }
 
     // Método para agregar un nuevo encabezado
