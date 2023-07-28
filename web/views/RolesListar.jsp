@@ -87,7 +87,6 @@
 
         <main id="main" class="main">
             <div class="col-lg-12">
-                <a href="Usuarios?accion=nuevo" class="btn btn-primary rounded-pill mb-3">Nuevo registro</a>
                 <div class="card">
                     <div class="card-body p-4">
                         <div class="table-responsive">
