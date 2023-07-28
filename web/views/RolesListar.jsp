@@ -93,56 +93,34 @@
                         <div class="table-responsive">
                             <table id="example" class="display table header-border verticle-middle" style="min-width: 845px">
                                 <thead>
-                                    <tr>
-                                        <th/>                                                 
-                                        <th class="text-center">Usuario</th>
-                                        <th class="text-center">Clave</th>
-                                        <th class="text-center">Rol</th>                                                  
-                                        <th class="text-center">Nombres</th>                                                  
+                                    <tr>                                      
+                                        <th class="text-center">Rol N.-</th>
+                                        <th class="text-center">Nombres</th>
                                         <th class="text-center">Apellidos</th>                                                  
-                                        <th class="text-center">Telefono</th>                                                  
-                                        <th class="text-center">Direccion</th>                                                  
+                                        <th class="text-center">Fecha Emsion</th>                                                  
+                                        <th class="text-center">Fecha Inicio</th>                                                  
+                                        <th class="text-center">Fecha Fin</th>                                                  
+                                        <th class="text-center">Total Pagado</th>                                                  
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <%
-                                                    UsuarioDao daoCh = new UsuarioDao();
-                                                    List<Usuario> listCh = daoCh.getAll();
-                                                    Iterator<Usuario> iterCh = listCh.iterator();
-                                                    Usuario ch = null;
+                                                    EncabezadoDao daoCh = new EncabezadoDao();
+                                                    List<Encabezado> listCh = daoCh.getAllEncabezados();
+                                                    Iterator<Encabezado> iterCh = listCh.iterator();
+                                                    Encabezado ch = null;
                                                     while (iterCh.hasNext()) {
                                                         ch = iterCh.next();
                                     %>
                                     <tr>                                                    
-                                        <td class="d-flex justify-items-center p-4"> 
-                                            <div class="dropdown custom-dropdown" data-bs-toggle="dropdown">
-                                                <div class="btn sharp btn-primary tp-btn">                                                            
-                                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <circle cx="12.4999" cy="3.5" r="2.5" fill="#A5A5A5"></circle>
-                                                    <circle cx="12.4999" cy="11.5" r="2.5" fill="#A5A5A5"></circle>
-                                                    <circle cx="12.4999" cy="19.5" r="2.5" fill="#A5A5A5"></circle>
-                                                    </svg>
-                                                </div>
-                                            </div> 
-                                            <div class="dropdown-menu dropdown-menu-right">
-                                                <div class="dropdown-divider"></div>
-                                                <div>
-                                                    <a href="Usuarios?accion=editar&idUsuario=<%= ch.getIdUsuario()%>" class="dropdown-item"><i class="fas fa-pencil-alt text-primary"></i>&nbsp; Actualizar</a>
-                                                </div>
-                                                <div class="dropdown-divider"></div>
-                                                <div>
-                                                    <a href="Usuarios?accion=eliminar&idUsuario=<%= ch.getIdUsuario()%>" class="dropdown-item"><i class="fas fa-arrow-circle-down text-secondary"></i>&nbsp; Eliminar</a>
-                                                </div>
-                                                <div class="dropdown-divider"></div>
-                                            </div>
-                                        </td>	                                               
-                                        <td class="text-center text-muted"><%= ch.getUsuUsuario()%></td>                                          
-                                        <td class="text-center text-muted"><%= ch.getUsuClave()%></td>                                          
-                                        <td class="text-center text-muted"><%= ch.getUsuRol()%></td>                                            
-                                        <td class="text-center text-muted"><%= ch.getUsuNombres()%></td>                                            
+
+                                        <td class="text-center text-muted"><%= ch.getIdEncabezado()%></td>                                          
+                                        <td class="text-center text-muted"><%= ch.getUsuNombres()%></td>                                          
                                         <td class="text-center text-muted"><%= ch.getUsuApellidos()%></td>                                            
-                                        <td class="text-center text-muted"><%= ch.getUsuTelefono()%></td>                                            
-                                        <td class="text-center text-muted"><%= ch.getUsuDireccion()%></td>                                            
+                                        <td class="text-center text-muted"><%= ch.getEncFechaEmision()%></td>                                            
+                                        <td class="text-center text-muted"><%= ch.getEncFechaInicio()%></td>                                            
+                                        <td class="text-center text-muted"><%= ch.getEncFechaFin()%></td>                                            
+                                        <td class="text-center text-muted"><%= ch.getEncTotalPagar()%></td>                                            
                                     </tr>  
                                     <%}%>
                                 </tbody>

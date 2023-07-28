@@ -12,6 +12,7 @@ public class Controlador extends HttpServlet {
     String LOGIN = "index.jsp";
     String USUARIOS = "views/Usuarios.jsp";
     String ROLES = "views/Roles.jsp";
+    String ROLES_LISTA = "views/RolesListar.jsp";
     String acceso = "";
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -29,11 +30,10 @@ public class Controlador extends HttpServlet {
                     acceso = USUARIOS;
                     break;
                 case "rol":
-                    Date fechaActual = new Date();
-
-                    // Mostrar la fecha actual
-                    System.out.println("Fecha actual: " + fechaActual);
                     acceso = ROLES;
+                    break;
+                case "lista-rol":
+                    acceso = ROLES_LISTA;
                     break;
                 default:
                     acceso = LOGIN;

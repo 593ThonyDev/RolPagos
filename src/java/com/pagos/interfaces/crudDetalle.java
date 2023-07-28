@@ -7,6 +7,7 @@ public interface crudDetalle {
 
     List<Detalle> getAll();
 
+
     Detalle getById(int id);
 
     String add(Detalle detalle);

@@ -23,6 +23,7 @@ public class EncabezadoDao implements crudEncabezado {
     // Variables para los procedimientos almacenados
     // Llamada al procedimiento almacenado para obtener todos los encabezados
     String getAll = "CALL spLeerEncabezados()";
+    String getAllDescripcion = "CALL SeleccionarEncabezadosDescripcion()";
     // Llamada al procedimiento almacenado para obtener un encabezado por su ID
     String getById = "CALL spObtenerEncabezadoPorID(?)";
     // Llamada al procedimiento almacenado para agregar un nuevo encabezado
@@ -95,8 +96,8 @@ public class EncabezadoDao implements crudEncabezado {
         // Se devuelve el objeto encabezado que contiene los datos del encabezado recuperado de la base de datos
         return encabezado;
     }
-    
-        public Integer getLastId() {
+
+    public Integer getLastId() {
         int numero = 0;
         try {
             con = (Connection) cn.getConexion();
@@ -130,7 +131,7 @@ public class EncabezadoDao implements crudEncabezado {
             cs.execute();
         } catch (SQLException ex) {
             // Si ocurre una excepción de tipo SQLException, se imprime un mensaje de error y se devuelve un mensaje de "no creado"
-            System.out.println("Error al crear: " + ex.getMessage());
+            System.out.println("Error al crear: " + ex);
             return "no creado";
         }
         // Si la operación fue exitosa, se devuelve un mensaje de "creado"
@@ -182,5 +183,40 @@ public class EncabezadoDao implements crudEncabezado {
         }
         // Si la operación fue exitosa, se devuelve un mensaje de "eliminado"
         return "eliminado";
+    }
+
+    @Override
+    public List<Encabezado> getAllEncabezados() {
+        // Se crea una lista para almacenar los objetos de Encabezado recuperados de la base de datos
+        ArrayList<Encabezado> lista = new ArrayList<>();
+        try {
+            // Se obtiene una conexión a la base de datos utilizando el objeto de conexión cn
+            con = (Connection) cn.getConexion();
+            // Se crea un objeto CallableStatement para invocar el procedimiento almacenado getAll
+            cs = con.prepareCall(getAllDescripcion);
+            // Se ejecuta la consulta y el resultado se almacena en el objeto ResultSet rs
+            rs = cs.executeQuery();
+            // Se itera a través de los resultados utilizando un bucle while
+            while (rs.next()) {
+                // Se crea un nuevo objeto Encabezado para almacenar los datos de un encabezado en particular
+                Encabezado enc = new Encabezado();
+                // Se obtienen los valores de las columnas correspondientes en el ResultSet rs y se asignan a las propiedades del objeto enc
+                enc.setIdEncabezado(rs.getInt(1));
+                enc.setFkUsuario(rs.getInt(2));
+                enc.setUsuApellidos(rs.getString(3));
+                enc.setUsuNombres(rs.getString(4));
+                enc.setEncFechaEmision(rs.getString(5));
+                enc.setEncFechaInicio(rs.getString(6));
+                enc.setEncFechaFin(rs.getString(7));
+                enc.setEncTotalPagar(rs.getDouble(8));
+                // Se agrega el objeto enc a la lista de encabezados
+                lista.add(enc);
+            }
+        } catch (SQLException ex) {
+            // Si ocurre una excepción de tipo SQLException, se imprime un mensaje de error
+            System.out.println("Error al listar: " + ex.getMessage());
+        }
+        // Se devuelve la lista que contiene todos los encabezados recuperados de la base de datos
+        return lista;
     }
 }

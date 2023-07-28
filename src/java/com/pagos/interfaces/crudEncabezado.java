@@ -7,6 +7,8 @@ public interface crudEncabezado {
 
     List<Encabezado> getAll();
 
+    List<Encabezado> getAllEncabezados();
+
     Encabezado getById(int id);
 
     String add(Encabezado encabezado);

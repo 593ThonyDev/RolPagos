@@ -82,7 +82,7 @@
 
         <main id="main" class="main">
             <div class="col-lg-12">
-                <!--<a href="Usuarios?accion=nuevo" class="btn btn-primary rounded-pill mb-3">Ver lista de Roles</a>-->
+                <a href="Controlador?p=lista-rol" class="btn btn-primary rounded-pill mb-3">Ver lista de Roles</a>
                 <div class="card">
                     <div class="card-header">
                         <h4>NUEVO ROL DE PAGO</h4>

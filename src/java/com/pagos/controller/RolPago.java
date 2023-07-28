@@ -9,34 +9,29 @@ import jakarta.servlet.RequestDispatcher;
 import java.io.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.ServletException;
-import org.json.JSONObject;
 
 public class RolPago extends HttpServlet {
 
     String LOGIN = "index.jsp";
+    String ROLES = "views/Roles.jsp";
     Detalle det = new Detalle();
     DetalleDao detDao = new DetalleDao();
     Encabezado enc = new Encabezado();
     EncabezadoDao encDao = new EncabezadoDao();
-    JSONObject obj = new JSONObject();
 
     //     
-    private int idEncabezado;
     private int fkUsuario;
     private String encFechaEmision;
     private String encFechaInicio;
     private String encFechaFin;
-    private double encTotalPagar;
+    private Double encTotalPagar;
     //
     private Integer fkEncabezado;
     private String detFecha;
-    private String detHoras;
+    private Integer detHoras;
     private Double detValor;
     private String detTipo = "PAGO";
 
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -54,53 +49,18 @@ public class RolPago extends HttpServlet {
                 case "guardar":
                     fkEncabezado = (encDao.getLastId() != 0 ? encDao.getLastId() + 1 : encDao.getLastId() + 1);
                     detFecha = request.getParameter("encEmision");
-                    detHoras = request.getParameter("detHoras");
-                    String detHoraValorStr = request.getParameter("detHoraValor");
-
-                    // Verificar si detHoraValorStr es nulo antes de convertirlo a Double
-                    if (detHoraValorStr != null && !detHoraValorStr.isEmpty()) {
-                        try {
-                            detValor = Double.parseDouble(detHoraValorStr);
-                        } catch (NumberFormatException e) {
-                            // Manejar el caso cuando el parámetro detHoraValor no es un número válido
-                            // Por ejemplo, puedes asignarle un valor predeterminado o mostrar un mensaje de error.
-                            // Aquí simplemente asignaremos 0.0 como valor predeterminado.
-                            detValor = 0.0;
-                        }
-                    } else {
-                        // Manejar el caso cuando el parámetro detHoraValor es nulo o está vacío
-                        // Por ejemplo, puedes asignarle un valor predeterminado o mostrar un mensaje de error.
-                        // Aquí simplemente asignaremos 0.0 como valor predeterminado.
-                        detValor = 0.0;
-                    }
-
+                    detHoras = Integer.parseInt(request.getParameter("detHoras"));
+                    detValor = Double.parseDouble(request.getParameter("detHoraValor"));
                     det = new Detalle(fkEncabezado, detFecha, detHoras, detValor, detTipo);
                     fkUsuario = Integer.parseInt(request.getParameter("fkUsuario"));
                     encFechaEmision = request.getParameter("encEmision");
                     encFechaInicio = request.getParameter("detInicio");
                     encFechaFin = request.getParameter("detFin");
-
-                    // Verificar si el totalPagarENC es nulo antes de convertirlo a Double
-                    String totalPagarEncStr = request.getParameter("totalPagarENC");
-                    if (totalPagarEncStr != null && !totalPagarEncStr.isEmpty()) {
-                        try {
-                            encTotalPagar = Double.parseDouble(totalPagarEncStr);
-                        } catch (NumberFormatException e) {
-                            // Manejar el caso cuando el parámetro totalPagarENC no es un número válido
-                            // Por ejemplo, puedes asignarle un valor predeterminado o mostrar un mensaje de error.
-                            // Aquí simplemente asignaremos 0.0 como valor predeterminado.
-                            encTotalPagar = 0.0;
-                        }
-                    } else {
-                        // Manejar el caso cuando el parámetro totalPagarENC es nulo o está vacío
-                        // Por ejemplo, puedes asignarle un valor predeterminado o mostrar un mensaje de error.
-                        // Aquí simplemente asignaremos 0.0 como valor predeterminado.
-                        encTotalPagar = 0.0;
-                    }
-
+                    encTotalPagar = detHoras * detValor;
                     enc = new Encabezado(fkUsuario, encFechaEmision, encFechaInicio, encFechaFin, encTotalPagar);
                     encDao.add(enc);
                     detDao.add(det);
+                    acceso = ROLES;
                     break;
                 default:
                     acceso = LOGIN;

@@ -26,7 +26,7 @@ public class DetalleDao implements crudDetalle {
     // Llamada al procedimiento almacenado para obtener un detalle por su ID
     String getById = "CALL spObtenerDetallePorID(?)";
     // Llamada al procedimiento almacenado para agregar un nuevo detalle
-    String add = "CALL spCrearDetalle(?,?,?,?,?,?)";
+    String add = "CALL CrearDetalle(?,?,?,?,?)";
     // Llamada al procedimiento almacenado para actualizar un detalle existente
     String update = "CALL spActualizarDetalle(?,?,?,?,?,?,?)";
     // Llamada al procedimiento almacenado para eliminar un detalle por su ID
@@ -52,7 +52,7 @@ public class DetalleDao implements crudDetalle {
                 det.setIdDetalle(rs.getInt(1));
                 det.setFkEncabezado(rs.getInt(2));
                 det.setDetFecha(rs.getString(3));
-                det.setDetHoras(rs.getString(4));
+                det.setDetHoras(rs.getInt(4));
                 det.setDetValor(rs.getDouble(5));
                 det.setDetTipo(rs.getString(6));
                 // Se agrega el objeto det a la lista de detalles
@@ -84,7 +84,7 @@ public class DetalleDao implements crudDetalle {
                 detalle.setIdDetalle(rs.getInt(1));
                 detalle.setFkEncabezado(rs.getInt(2));
                 detalle.setDetFecha(rs.getString(3));
-                detalle.setDetHoras(rs.getString(4));
+                detalle.setDetHoras(rs.getInt(4));
                 detalle.setDetValor(rs.getDouble(5));
                 detalle.setDetTipo(rs.getString(6));
             }
@@ -107,14 +107,14 @@ public class DetalleDao implements crudDetalle {
             // Se establecen los parámetros del procedimiento almacenado mediante los métodos setInt() y setString()
             cs.setInt(1, det.getFkEncabezado());
             cs.setString(2, det.getDetFecha());
-            cs.setString(3, det.getDetHoras());
+            cs.setInt(3, det.getDetHoras());
             cs.setDouble(4, det.getDetValor());
             cs.setString(5, det.getDetTipo());
             // Se ejecuta el procedimiento almacenado para agregar el nuevo detalle a la base de datos
             cs.execute();
         } catch (SQLException ex) {
             // Si ocurre una excepción de tipo SQLException, se imprime un mensaje de error y se devuelve un mensaje de "no creado"
-            System.out.println("Error al crear: " + ex.getMessage());
+            System.out.println("Error al crear el detalle: " + ex.getMessage());
             return "no creado";
         }
         // Si la operación fue exitosa, se devuelve un mensaje de "creado"
@@ -133,7 +133,7 @@ public class DetalleDao implements crudDetalle {
             cs.setInt(1, det.getIdDetalle());
             cs.setInt(2, det.getFkEncabezado());
             cs.setString(3, det.getDetFecha());
-            cs.setString(4, det.getDetHoras());
+            cs.setInt(4, det.getDetHoras());
             cs.setDouble(5, det.getDetValor());
             cs.setString(6, det.getDetTipo());
             // Se ejecuta el procedimiento almacenado para actualizar el detalle en la base de datos
@@ -167,4 +167,6 @@ public class DetalleDao implements crudDetalle {
         // Si la operación fue exitosa, se devuelve un mensaje de "eliminado"
         return "eliminado";
     }
+
+   
 }

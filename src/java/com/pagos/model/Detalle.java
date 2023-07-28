@@ -1,17 +1,18 @@
 package com.pagos.model;
 
-public class Detalle extends Encabezado{
-    private Integer idDetalle; 
-    private Integer fkEncabezado; 
+public class Detalle extends Encabezado {
+
+    private Integer idDetalle;
+    private Integer fkEncabezado;
     private String detFecha;
-    private String detHoras;
+    private Integer detHoras;
     private Double detValor;
     private String detTipo;
 
     public Detalle() {
     }
 
-    public Detalle(Integer idDetalle, Integer fkEncabezado, String detFecha, String detHoras, Double detValor, String detTipo) {
+    public Detalle(Integer idDetalle, Integer fkEncabezado, String detFecha, Integer detHoras, Double detValor, String detTipo) {
         this.idDetalle = idDetalle;
         this.fkEncabezado = fkEncabezado;
         this.detFecha = detFecha;
@@ -20,7 +21,7 @@ public class Detalle extends Encabezado{
         this.detTipo = detTipo;
     }
 
-    public Detalle(Integer fkEncabezado, String detFecha, String detHoras, Double detValor, String detTipo) {
+    public Detalle(Integer fkEncabezado, String detFecha, Integer detHoras, Double detValor, String detTipo) {
         this.fkEncabezado = fkEncabezado;
         this.detFecha = detFecha;
         this.detHoras = detHoras;
@@ -52,11 +53,11 @@ public class Detalle extends Encabezado{
         this.detFecha = detFecha;
     }
 
-    public String getDetHoras() {
+    public Integer getDetHoras() {
         return detHoras;
     }
 
-    public void setDetHoras(String detHoras) {
+    public void setDetHoras(Integer detHoras) {
         this.detHoras = detHoras;
     }
 
@@ -76,7 +77,4 @@ public class Detalle extends Encabezado{
         this.detTipo = detTipo;
     }
 
-   
-    
-    
 }
