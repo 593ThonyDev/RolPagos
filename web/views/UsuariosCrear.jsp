@@ -61,25 +61,13 @@
         <aside id="sidebar" class="sidebar">
             <ul class="sidebar-nav" id="sidebar-nav">
                 <li class="nav-item">
-                    <a class="nav-link " href="Controlador?p=ventas">
+                    <a class="nav-link " href="Controlador?p=rol">
                         <i class="bi bi-grid"></i>
-                        <span>Ventas</span>
+                        <span>Roles</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="Controlador?p=clientes">
-                        <i class="bi bi-grid"></i>
-                        <span>Clientes</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link " href="Controlador?p=productos">
-                        <i class="bi bi-grid"></i>
-                        <span>Productos</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link " href="Controlador?p=usuarios">
+                    <a class="nav-link " href="Controlador?p=empleados">
                         <i class="bi bi-grid"></i>
                         <span>Usuarios</span>
                     </a>
@@ -119,7 +107,7 @@
                             <div class="col-xl-6 mb-3">
                                 <div class="example">
                                     <p class="mb-1 text-primary">Apellidos</p>
-                                    <input type="password" class="form-control" required="true" name="usuApellidos">
+                                    <input type="text" class="form-control" required="true" name="usuApellidos">
                                 </div>
                             </div>                                            
                         </div>                                                                                                                                                                                                                                           
@@ -133,7 +121,7 @@
                             <div class="col-xl-6 mb-3">
                                 <div class="example">
                                     <p class="mb-1 text-primary">Direccion</p>
-                                    <input type="password" class="form-control" required="true" name="usuDireccion">
+                                    <input type="text" class="form-control" required="true" name="usuDireccion">
                                 </div>
                             </div>                                            
                         </div>                                                                                                                                                                                                                                           

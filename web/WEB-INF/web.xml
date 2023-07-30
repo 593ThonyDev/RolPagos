@@ -21,6 +21,10 @@
         <servlet-class>com.pagos.controller.Login</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>CerrarSesion</servlet-name>
+        <servlet-class>com.pagos.controller.CerrarSesion</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>Controlador</servlet-name>
         <servlet-class>com.pagos.controller.Controlador</servlet-class>
     </servlet>
@@ -43,6 +47,10 @@
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CerrarSesion</servlet-name>
+        <url-pattern>/CerrarSesion</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Controlador</servlet-name>
